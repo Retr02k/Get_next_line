@@ -6,7 +6,7 @@
 /*   By: psilva-p <psilva-p@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 18:39:07 by psilva-p          #+#    #+#             */
-/*   Updated: 2025/11/20 18:40:41 by psilva-p         ###   ########.fr       */
+/*   Updated: 2025/11/28 21:41:52 by psilva-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@
 # include <fcntl.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
+#define BUFFER_SIZE 2
 # endif
- 
 
-char	*get_next_line(int fd);
-
-
+void	buffer_move(char *buffer);
+char	*ft_strjoin(char *s1, char *s2);
+int		linelen(char *s);
 
 #endif

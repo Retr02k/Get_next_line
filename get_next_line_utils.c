@@ -6,49 +6,33 @@
 /*   By: psilva-p <psilva-p@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 15:31:07 by psilva-p          #+#    #+#             */
-/*   Updated: 2025/11/20 19:13:39 by psilva-p         ###   ########.fr       */
+/*   Updated: 2025/11/28 21:39:50 by psilva-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	newline_in_buffer(char *str)
+int	linelen(char *s)
 {
-	int i;
+	int	ctd;
 
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '\n')
-			return (i);
-		i++;
-	}
-	return (i);
-}
-
-int linelen(char *s)
-{
-	int	counter;
-
-	counter = 0;
+	ctd = 0;
 	if (!s)
 		return (0);
-	while (s && s[counter] && s[counter] != '\n')
-		counter++;
-	if (s && s[counter] == '\n')
-		counter++;
-	return (counter);
+	while (s && s[ctd] && s[ctd] != '\n')
+		ctd++;
+	if (s && s[ctd] == '\n')
+		ctd++;
+	return (ctd);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;
-	int		size;
 	int		i;
 	int		j;
-	
-	size = linelen(s1) + linelen(s2) + 1;
-	str = malloc(size * sizeof(char));
+
+	str = malloc(sizeof(char) * (linelen(s1) + linelen(s2) + 1));
 	if (!str)
 		return (NULL);
 	i = 0;
@@ -57,13 +41,16 @@ char	*ft_strjoin(char *s1, char *s2)
 		str[i] = s1[i];
 		i++;
 	}
-	j = -1;
-	while (s2[++j])
+	j = 0;
+	while (s2 && s2[j] && s2[j] != '\n')
 	{
-		str[i] = s2[j];
-		i++;
+		str[i + j] = s2[j];
+		j++;
 	}
-	str[i] = '\0';
+	if (s2 && s2[j] == '\n')
+		str[i + j++] = '\n';
+	str[i + j] = '\0';
+	free(s1);
 	return (str);
 }
 
@@ -77,23 +64,7 @@ void	buffer_move(char *buffer)
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	i += (buffer[i] == '\n');
-	while (buffer[j])
-	{
-		buffer[j] = buffer[i];
-		i++;
-		j++;
-	}
+	while (buffer[i])
+		buffer[j++] = buffer[i++];
 	buffer[j] = '\0';
 }
-
-// int main()
-// {
-// 	char str[] = "Hello Worldhaukd";
-	
-// 	buffer_move(str);
-// 	printf("%s\n",str);
-// 	// char	*str = ft_strjoin(NULL, "World!");
-// 	// printf("%s\n", str);
-// 	// free(str);
-
-// }
