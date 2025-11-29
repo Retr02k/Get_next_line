@@ -6,7 +6,7 @@
 /*   By: psilva-p <psilva-p@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 15:31:07 by psilva-p          #+#    #+#             */
-/*   Updated: 2025/11/28 21:39:50 by psilva-p         ###   ########.fr       */
+/*   Updated: 2025/11/29 19:04:09 by psilva-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	linelen(char *s)
 	ctd = 0;
 	if (!s)
 		return (0);
-	while (s && s[ctd] && s[ctd] != '\n')
+	while (s[ctd] && s[ctd] != '\n')
 		ctd++;
-	if (s && s[ctd] == '\n')
+	if (s[ctd] == '\n')
 		ctd++;
 	return (ctd);
 }
@@ -42,13 +42,12 @@ char	*ft_strjoin(char *s1, char *s2)
 		i++;
 	}
 	j = 0;
-	while (s2 && s2[j] && s2[j] != '\n')
+	while (s2 && s2[j])
 	{
 		str[i + j] = s2[j];
-		j++;
+		if (s2[j++] == '\n')
+			break;
 	}
-	if (s2 && s2[j] == '\n')
-		str[i + j++] = '\n';
 	str[i + j] = '\0';
 	free(s1);
 	return (str);
@@ -62,9 +61,11 @@ void	buffer_move(char *buffer)
 	i = 0;
 	j = 0;
 	while (buffer[i] && buffer[i] != '\n')
-		i++;
+		buffer[i++] = '\0';
 	i += (buffer[i] == '\n');
 	while (buffer[i])
-		buffer[j++] = buffer[i++];
-	buffer[j] = '\0';
+	{
+		buffer[j++] = buffer[i];
+		buffer[i++] = '\0';
+	}
 }
