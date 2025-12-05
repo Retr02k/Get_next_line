@@ -6,7 +6,7 @@
 /*   By: psilva-p <psilva-p@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:22:21 by psilva-p          #+#    #+#             */
-/*   Updated: 2025/11/29 19:10:32 by psilva-p         ###   ########.fr       */
+/*   Updated: 2025/11/29 20:38:36 by psilva-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,16 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-// int main(void)
-// {
-	// int fd = open("test.txt", O_RDONLY);
-	// char *line;
-// 
-	// while ((line = get_next_line(fd)))
-	// {
-		// printf("%s", line);
-		// free(line);
-	// }
-	// close(fd);
-	// return 0;
-// }
+int main(void)
+{
+	int fd = open("test.txt", O_RDONLY);
+	char *line;
+
+	while ((line = get_next_line(fd)))
+	{
+		printf("%s", line);
+		free(line);
+	}
+	close(fd);
+	return 0;
+}

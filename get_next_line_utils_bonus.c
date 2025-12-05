@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psilva-p <psilva-p@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 15:31:07 by psilva-p          #+#    #+#             */
-/*   Updated: 2025/11/29 20:30:15 by psilva-p         ###   ########.fr       */
+/*   Created: 2025/11/29 19:18:24 by psilva-p          #+#    #+#             */
+/*   Updated: 2025/11/29 20:46:07 by psilva-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int	linelen(char *s)
 {
@@ -68,5 +68,5 @@ void	buffer_move(char *buffer)
 		buffer[j++] = buffer[i];
 		buffer[i++] = '\0';
 	}
-	buffer[j] = '\0';
+	buffer[j] ='\0';
 }
