@@ -6,7 +6,7 @@
 /*   By: psilva-p <psilva-p@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 19:18:12 by psilva-p          #+#    #+#             */
-/*   Updated: 2025/12/05 15:15:57 by psilva-p         ###   ########.fr       */
+/*   Updated: 2025/12/05 16:54:27 by psilva-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*get_next_line(int fd)
 	size_t			bytes_lidos;
 
 	line = NULL;
-	if (fd < 0 || fd >= MAX_FD || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd > MAX_FD || BUFFER_SIZE <= 0)
 		return (NULL);
 	while (*buffer || read(fd, buffer, BUFFER_SIZE) > 0)
 	{
