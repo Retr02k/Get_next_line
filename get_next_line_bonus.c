@@ -6,7 +6,7 @@
 /*   By: psilva-p <psilva-p@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 19:18:12 by psilva-p          #+#    #+#             */
-/*   Updated: 2025/12/05 16:54:27 by psilva-p         ###   ########.fr       */
+/*   Updated: 2025/12/10 17:29:50 by psilva-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*get_next_line(int fd)
 	size_t			bytes_lidos;
 
 	line = NULL;
-	if (fd < 0 || fd > MAX_FD || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd >= MAX_FD || BUFFER_SIZE <= 0)
 		return (NULL);
 	while (*buffer || read(fd, buffer, BUFFER_SIZE) > 0)
 	{
@@ -34,35 +34,10 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-// int main()
-// {
-//     printf("Maximum open files allowed: %d\n", FOPEN_MAX);
-//     return 0;
-
-// 	int fd = open("test.txt", O_RDONLY);
-// 	int fd1 = open("test.txt", O_RDONLY);
-// 	int fd2 = open("test.txt", O_RDONLY);
-// 	int fd3 = open("test.txt", O_RDONLY);
-// 	int fd4 = open("test.txt", O_RDONLY);
-// 	int fd5 = open("test.txt", O_RDONLY);
-// 	int fd6 = open("test.txt", O_RDONLY);
-// 	int fd7 = open("test.txt", O_RDONLY);
-// 	int fd8 = open("test.txt", O_RDONLY);
-// 	int fd9 = open("test.txt", O_RDONLY);
-// 	int fd10 = open("test.txt", O_RDONLY);
-// 	int fd11 = open("test.txt", O_RDONLY);
-// 	int fd12 = open("test.txt", O_RDONLY);
-// 	int fd13 = open("test.txt", O_RDONLY);
-// 	int fd14 = open("test.txt", O_RDONLY);
-// 	int fd15 = open("test.txt", O_RDONLY);
-// 	int fd16 = open("test.txt", O_RDONLY);
-// 	char *line;
+int main()
+{
+	int fd = open("test.txt", O_RDONLY);
+	int fd1 = open("test2.txt", O_RDONLY);
 
 	
-
-// 	close(fd);
-// 	return 0;
-	
-
-
-// }
+}
