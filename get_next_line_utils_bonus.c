@@ -6,7 +6,7 @@
 /*   By: psilva-p <psilva-p@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 19:18:24 by psilva-p          #+#    #+#             */
-/*   Updated: 2025/12/10 20:49:49 by psilva-p         ###   ########.fr       */
+/*   Updated: 2025/12/12 20:38:31 by psilva-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ char	*ft_strjoin(char *s1, char *s2)
 			break ;
 	}
 	str[i + j] = '\0';
-	free(s1);
+	if(s1)
+		free(s1);
 	return (str);
 }
 
@@ -62,7 +63,11 @@ void	buffer_move(char *buffer)
 	j = 0;
 	while (buffer[i] && buffer[i] != '\n')
 		buffer[i++] = '\0';
-	i += (buffer[i] == '\n');
+	if (buffer[i] == '\n')
+	{
+		buffer[i] = '\0';
+		i++;
+	}
 	while (buffer[i])
 	{
 		buffer[j++] = buffer[i];

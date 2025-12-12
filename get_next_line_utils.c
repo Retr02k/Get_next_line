@@ -6,7 +6,7 @@
 /*   By: psilva-p <psilva-p@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 15:31:07 by psilva-p          #+#    #+#             */
-/*   Updated: 2025/12/10 20:48:48 by psilva-p         ###   ########.fr       */
+/*   Updated: 2025/12/12 18:47:18 by psilva-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,11 @@ void	buffer_move(char *buffer)
 	j = 0;
 	while (buffer[i] && buffer[i] != '\n')
 		buffer[i++] = '\0';
-	i += (buffer[i] == '\n');
+	if (buffer[i] == '\n')
+	{
+		buffer[i] = '\0';
+		i++;
+	}
 	while (buffer[i])
 	{
 		buffer[j++] = buffer[i];
