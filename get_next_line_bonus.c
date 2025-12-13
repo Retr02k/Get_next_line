@@ -6,7 +6,7 @@
 /*   By: psilva-p <psilva-p@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 19:18:12 by psilva-p          #+#    #+#             */
-/*   Updated: 2025/12/13 18:17:01 by psilva-p         ###   ########.fr       */
+/*   Updated: 2025/12/13 18:54:34 by psilva-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,25 @@ char	*get_next_line(int fd)
 {
 	static char		buffer[MAX_FD][BUFFER_SIZE + 1];
 	char			*line;
-	size_t			bytes_read;
+	int				bytes_read;
+	size_t			line_len;
 
 	line = NULL;
 	if (fd < 0 || fd >= MAX_FD || BUFFER_SIZE <= 0)
 		return (NULL);
-	while (*buffer[fd] || read(fd, buffer[fd], BUFFER_SIZE) > 0)
+	bytes_read = read(fd, buffer[fd], BUFFER_SIZE);
+	while (*buffer[fd] || bytes_read > 0)
 	{
-		line = ft_strjoin(line, buffer[fd]);
+		if (bytes_read > 0)
+			buffer[fd][bytes_read] = '\0';
+		line = append_to_line(line, buffer[fd]);
 		if (!line)
 			return (NULL);
-		buffer_move(buffer[fd]);
+		buffer_shift(buffer[fd]);
 		bytes_read = linelen(line);
-		if (!bytes_read || (line[bytes_read - 1] == '\n'))
+		if (line_len > 0 && (line[bytes_read - 1] == '\n'))
 			return (line);
+		bytes_read = read(fd, buffer[fd], BUFFER_SIZE);
 	}
 	return (line);
 }

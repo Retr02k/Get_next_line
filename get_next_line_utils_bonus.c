@@ -6,7 +6,7 @@
 /*   By: psilva-p <psilva-p@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 19:18:24 by psilva-p          #+#    #+#             */
-/*   Updated: 2025/12/12 20:38:31 by psilva-p         ###   ########.fr       */
+/*   Updated: 2025/12/13 19:00:39 by psilva-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	linelen(char *s)
 	return (ctd);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*append_to_line(char *s1, char *s2)
 {
 	char	*str;
 	int		i;
@@ -49,29 +49,25 @@ char	*ft_strjoin(char *s1, char *s2)
 			break ;
 	}
 	str[i + j] = '\0';
-	if(s1)
-		free(s1);
+	free(s1);
 	return (str);
 }
 
-void	buffer_move(char *buffer)
+void	buffer_shift(char *buffer)
 {
-	int	i;
-	int	j;
+	int	read_pos;
+	int	write_pos;
 
-	i = 0;
-	j = 0;
-	while (buffer[i] && buffer[i] != '\n')
-		buffer[i++] = '\0';
-	if (buffer[i] == '\n')
+	read_pos = 0;
+	write_pos = 0;
+	while (buffer[read_pos] && buffer[read_pos] != '\n')
+		buffer[read_pos++] = '\0';
+	if (buffer[read_pos] == '\n')
+		buffer[read_pos++] = '\0';
+	while (buffer[read_pos])
 	{
-		buffer[i] = '\0';
-		i++;
+		buffer[write_pos++] = buffer[read_pos];
+		buffer[read_pos++] = '\0';
 	}
-	while (buffer[i])
-	{
-		buffer[j++] = buffer[i];
-		buffer[i++] = '\0';
-	}
-	buffer[j] = '\0';
+	buffer[write_pos] = '\0';
 }

@@ -6,7 +6,7 @@
 /*   By: psilva-p <psilva-p@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 15:31:07 by psilva-p          #+#    #+#             */
-/*   Updated: 2025/12/13 18:26:34 by psilva-p         ###   ########.fr       */
+/*   Updated: 2025/12/13 18:57:03 by psilva-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,19 +55,19 @@ char	*append_to_line(char *s1, char *s2)
 
 void	buffer_shift(char *buffer)
 {
-	int	line;
-	int	stash;
+	int	read_pos;
+	int	write_pos;
 
-	line = 0;
-	stash = 0;
-	while (buffer[line] && buffer[line] != '\n')
-		buffer[line++] = '\0';
-	if (buffer[line] == '\n')
-		buffer[line++] = '\0';
-	while (buffer[line])
+	read_pos = 0;
+	write_pos = 0;
+	while (buffer[read_pos] && buffer[read_pos] != '\n')
+		buffer[read_pos++] = '\0';
+	if (buffer[read_pos] == '\n')
+		buffer[read_pos++] = '\0';
+	while (buffer[read_pos])
 	{
-		buffer[stash++] = buffer[line];
-		buffer[line++] = '\0';
+		buffer[write_pos++] = buffer[read_pos];
+		buffer[read_pos++] = '\0';
 	}
-	buffer[stash] = '\0';
+	buffer[write_pos] = '\0';
 }

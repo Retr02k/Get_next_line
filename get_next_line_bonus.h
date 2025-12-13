@@ -6,7 +6,7 @@
 /*   By: psilva-p <psilva-p@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 19:18:21 by psilva-p          #+#    #+#             */
-/*   Updated: 2025/12/12 20:31:44 by psilva-p         ###   ########.fr       */
+/*   Updated: 2025/12/13 19:01:17 by psilva-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 #  define BUFFER_SIZE 10
 # endif
 
+void	buffer_shift(char *buffer);
+char	*append_to_line(char *s1, char *s2);
 int		linelen(char *s);
-char	*ft_strjoin(char *s1, char *s2);
-void	buffer_move(char *buffer);
 char	*get_next_line(int fd);
 
 #endif
