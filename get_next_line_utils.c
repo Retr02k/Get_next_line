@@ -6,7 +6,7 @@
 /*   By: psilva-p <psilva-p@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 15:31:07 by psilva-p          #+#    #+#             */
-/*   Updated: 2025/12/13 18:19:14 by psilva-p         ###   ########.fr       */
+/*   Updated: 2025/12/13 18:26:34 by psilva-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	linelen(char *s)
 	return (ctd);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*append_to_line(char *s1, char *s2)
 {
 	char	*str;
 	int		i;
@@ -53,7 +53,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (str);
 }
 
-void	buffer_move(char *buffer)
+void	buffer_shift(char *buffer)
 {
 	int	line;
 	int	stash;
@@ -63,10 +63,7 @@ void	buffer_move(char *buffer)
 	while (buffer[line] && buffer[line] != '\n')
 		buffer[line++] = '\0';
 	if (buffer[line] == '\n')
-	{
-		buffer[line] = '\0';
-		line++;
-	}
+		buffer[line++] = '\0';
 	while (buffer[line])
 	{
 		buffer[stash++] = buffer[line];
