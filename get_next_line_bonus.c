@@ -6,7 +6,7 @@
 /*   By: psilva-p <psilva-p@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 19:18:12 by psilva-p          #+#    #+#             */
-/*   Updated: 2025/12/13 18:54:34 by psilva-p         ###   ########.fr       */
+/*   Updated: 2025/12/13 19:05:14 by psilva-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ char	*get_next_line(int fd)
 		if (!line)
 			return (NULL);
 		buffer_shift(buffer[fd]);
-		bytes_read = linelen(line);
-		if (line_len > 0 && (line[bytes_read - 1] == '\n'))
+		line_len = linelen(line);
+		if (line_len > 0 && line[bytes_read - 1] == '\n')
 			return (line);
 		bytes_read = read(fd, buffer[fd], BUFFER_SIZE);
 	}
