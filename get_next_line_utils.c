@@ -6,7 +6,7 @@
 /*   By: psilva-p <psilva-p@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 15:31:07 by psilva-p          #+#    #+#             */
-/*   Updated: 2025/12/12 18:47:18 by psilva-p         ###   ########.fr       */
+/*   Updated: 2025/12/13 18:19:14 by psilva-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,22 +55,22 @@ char	*ft_strjoin(char *s1, char *s2)
 
 void	buffer_move(char *buffer)
 {
-	int	i;
-	int	j;
+	int	line;
+	int	stash;
 
-	i = 0;
-	j = 0;
-	while (buffer[i] && buffer[i] != '\n')
-		buffer[i++] = '\0';
-	if (buffer[i] == '\n')
+	line = 0;
+	stash = 0;
+	while (buffer[line] && buffer[line] != '\n')
+		buffer[line++] = '\0';
+	if (buffer[line] == '\n')
 	{
-		buffer[i] = '\0';
-		i++;
+		buffer[line] = '\0';
+		line++;
 	}
-	while (buffer[i])
+	while (buffer[line])
 	{
-		buffer[j++] = buffer[i];
-		buffer[i++] = '\0';
+		buffer[stash++] = buffer[line];
+		buffer[line++] = '\0';
 	}
-	buffer[j] = '\0';
+	buffer[stash] = '\0';
 }

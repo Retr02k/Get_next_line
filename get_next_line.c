@@ -6,7 +6,7 @@
 /*   By: psilva-p <psilva-p@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 12:22:21 by psilva-p          #+#    #+#             */
-/*   Updated: 2025/12/12 18:59:27 by psilva-p         ###   ########.fr       */
+/*   Updated: 2025/12/13 18:16:31 by psilva-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*get_next_line(int fd)
 {
 	static char		buffer[BUFFER_SIZE + 1];
 	char			*line;
-	size_t			bytes_lidos;
+	size_t			bytes_read;
 
 	line = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
@@ -27,8 +27,8 @@ char	*get_next_line(int fd)
 		if (!line)
 			return (NULL);
 		buffer_move(buffer);
-		bytes_lidos = linelen(line);
-		if (!bytes_lidos || line[bytes_lidos - 1] == '\n')
+		bytes_read = linelen(line);
+		if (!bytes_read || line[bytes_read - 1] == '\n')
 			return (line);
 	}
 	return (line);
