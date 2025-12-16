@@ -1,3 +1,4 @@
+*This project has been created as part of the 42 curriculum by psilva-p*
 ## Description ##
 
 Get_next_line is a function used to read from a file descriptor line by line.
